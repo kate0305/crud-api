@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    //"rootDir": "./src",
     "module": "NodeNext",
     "target": "ESNext",
     "allowJs": true,
@@ -22,19 +21,6 @@
   "exclude": ["node_modules"],
   "lib": ["ESNext"],
   "ts-node": {
-    "esm": true,
-    //"experimentalSpecifierResolution": "node"
+    "esm": true
   }
 }
-
-// {"compilerOptions": {
-//   "lib": ["es2022"],
-//   "module": "commonjs",
-//   "target": "es2022",
-
-//   "strict": true,
-//   "esModuleInterop": true,
-//   "skipLibCheck": true,
-//   "forceConsistentCasingInFileNames": true,
-//   "moduleResolution": "node"
-// }}
