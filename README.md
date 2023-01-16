@@ -10,6 +10,7 @@ cd crud-api
 git checkout dev
 npm i
 example.env file rename to .env
+npm run start:{mode} (you can choose development or production mode)
 ```
 
 ### How to run API
