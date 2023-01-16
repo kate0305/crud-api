@@ -1,3 +1,4 @@
+import * as dotenv from 'dotenv';
 import { createServer } from 'node:http';
 import { users } from './user/users';
 import { URL } from './constants';
@@ -9,6 +10,7 @@ import { deleteUser } from './user/deleteUser';
 import { handleError, handleErrorMessage } from './utils/handleError';
 import { User } from './types/types';
 
+dotenv.config();
 const PORT = process.env.PORT || 4000;
 const { OK, CREATED, NO_CONTENT } = StatusCodes;
 const { ERR_PAGE_NOT_FOUND, ERR_METHOD } = ErrMessages;
