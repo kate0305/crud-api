@@ -7,7 +7,8 @@ import { ErrMessages } from '../types/enums';
 export const createID: string = uuidv4();
 
 export const createUser = async (newUser: NewUser): Promise<User> => {
-  if (validateUserFields(newUser)) {
+  const isValid = await validateUserFields(newUser);
+  if (isValid) {
     const id: string = uuidv4();
     const user: User = { id, ...newUser };
     users.push(user);

@@ -1,6 +1,6 @@
 import { NewUser } from '../types/types';
 
-export const validateUserFields = (user: NewUser): boolean => {
+export const validateUserFields = async (user: NewUser): Promise<boolean> => {
   const arrToChek = ['username', 'age', 'hobbies'];
   const userFildsKeys = Object.keys(user);
 

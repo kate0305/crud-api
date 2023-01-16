@@ -4,10 +4,10 @@ import { NewUser } from '../types/types';
 import { validateUserFields } from './validateUserFields';
 
 export const deleteUser = async (users: User[], userID: string, newUser: NewUser): Promise<boolean> => {
-  const user = findUser(users, userID);
-  
+  const user = await findUser(users, userID);
+  const isValid = await validateUserFields(newUser);
   if (user) {
-    if (validateUserFields(newUser)) {
+    if (isValid) {
       const index = users.indexOf(user);
       users.splice(index, 1);
       return true;

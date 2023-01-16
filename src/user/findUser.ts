@@ -2,7 +2,7 @@ import { User } from '../types/types';
 import { validate } from 'uuid';
 import { ErrMessages } from '../types/enums';
 
-export const findUser = (users: User[], userID: string): User => {
+export const findUser = async (users: User[], userID: string): Promise<User> => {
   const { ERR_ID_INVALID, ERR_USER_NOT_FOUND } = ErrMessages;
   const validateID = validate(userID);
   if (validateID) {
