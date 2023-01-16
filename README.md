@@ -14,18 +14,22 @@ example.env file rename to .env
 
 ### How to run API
 `"start:dev": "nodemon"` Development mode
+
 `"start:prod": "webpack && node ./dist/bundle.js"` Production mode
+
 `"lint": "prettier --check ./src"` Сheck files with Prettier
+
 `"lint:fix": "prettier --write ./src"` Format all files with Prettier
 
 ### Database Schema
 
 #### User
 Users are stored as objects with the following properties:
-    - `id` — unique identifier (`string`, `uuid`) generated on server side
-    - `username` — user's name (`string`, **required**)
-    - `age` — user's age (`number`, **required**)
-    - `hobbies` — user's hobbies (`array` of `strings` or empty `array`, **required**)
+
+  - `id` — unique identifier (`string`, `uuid`) generated on server side
+  - `username` — user's name (`string`, **required**)
+  - `age` — user's age (`number`, **required**)
+  - `hobbies` — user's hobbies (`array` of `strings` or empty `array`, **required**)
 
 #### Routes API
 #### Users
