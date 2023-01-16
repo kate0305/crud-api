@@ -7,7 +7,7 @@ import { findUser } from './user/findUser';
 import { updateUser } from './user/updateUser';
 import { deleteUser } from './user/deleteUser';
 import { handleError, handleErrorMessage } from './utils/handleError';
-import { NewUser, User } from './types/types';
+import { User } from './types/types';
 
 const PORT = process.env.PORT || 4000;
 const { OK, CREATED, NO_CONTENT } = StatusCodes;
@@ -25,7 +25,7 @@ export const server = createServer(async (req, res) => {
     for await (const chunk of req) {
       chunks.push(chunk);
     }
-    const user: NewUser = JSON.parse(Buffer.concat(chunks).toString());
+    const user = Buffer.concat(chunks).toString();
 
     if (url === URL) {
       switch (method) {
@@ -34,7 +34,7 @@ export const server = createServer(async (req, res) => {
           res.statusCode = OK;
           break;
         case 'POST':
-          responseBody = await createUser(user);
+          responseBody = await createUser(JSON.parse(user));
           res.statusCode = CREATED;
           break;
         default:
@@ -50,10 +50,10 @@ export const server = createServer(async (req, res) => {
             break;
           case 'PUT':
             res.statusCode = OK;
-            responseBody = await updateUser(users, parseURL[2], user);
+            responseBody = await updateUser(users, parseURL[2], JSON.parse(user));
             break;
           case 'DELETE':
-            responseBody = await deleteUser(users, parseURL[2], user);
+            responseBody = await deleteUser(users, parseURL[2]);
             if (!responseBody) {
               res.end(JSON.stringify(responseBody));
             }
