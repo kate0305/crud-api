@@ -15,5 +15,6 @@ export const updateUser = async (users: User[], userID: string, newUser: NewUser
     } else {
       throw new Error(ErrMessages.ERR_REQUEST);
     }
-  } return user
+  }
+  return user;
 };
