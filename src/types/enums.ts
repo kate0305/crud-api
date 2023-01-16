@@ -4,6 +4,7 @@ export enum StatusCodes {
   NO_CONTENT = 204,
   BAD_REQUEST = 400,
   NOT_FOUND = 404,
+  METHOD_NOT_ALLOWED = 405,
   SERVER_ERROR = 500,
 }
 
@@ -13,4 +14,5 @@ export enum ErrMessages {
   ERR_REQUEST = 'Request body does not contain required fields',
   ERR_PAGE_NOT_FOUND = 'Page not found on this server',
   ERR_SERVER = 'The server encountered an error and could not complete your request',
+  ERR_METHOD = 'This request method is not supported by this server',
 }

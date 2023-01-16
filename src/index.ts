@@ -11,7 +11,7 @@ import { NewUser, User } from './types/types';
 
 const PORT = process.env.PORT || 4000;
 const { OK, CREATED, NO_CONTENT } = StatusCodes;
-const { ERR_PAGE_NOT_FOUND } = ErrMessages;
+const { ERR_PAGE_NOT_FOUND, ERR_METHOD } = ErrMessages;
 
 export const server = createServer(async (req, res) => {
   const { method, url } = req;
@@ -38,7 +38,8 @@ export const server = createServer(async (req, res) => {
           res.statusCode = CREATED;
           break;
         default:
-          break;
+          res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+          throw new Error(ERR_METHOD);
       }
     } else if (parseURL.length === 3) {
       if (`/${usersURL}` === URL) {
@@ -59,7 +60,8 @@ export const server = createServer(async (req, res) => {
             res.statusCode = NO_CONTENT;
             break;
           default:
-            break;
+            res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, DELETE');
+            throw new Error(ERR_METHOD);
         }
       }
     } else {
